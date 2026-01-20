@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraken Seafood Restaurant | Modern Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' https://i.postimg.cc/QxqwYWyc/background.png?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-padding {
+            padding: 6rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 3rem 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-card {
+                min-width: 50%;
+            }
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-20 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                &nbsp;&nbsp;&nbsp;<img src="https://i.postimg.cc/3RnzcGSP/logo-image.jpg" alt="Kraken Seafood Restaurant Logo" class="h-14 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-white hover:text-gray-300 transition-colors">Home</a>
+                <a href="#menu" class="text-white hover:text-gray-300 transition-colors">Menu</a>
+                <a href="#story" class="text-white hover:text-gray-300 transition-colors">Our Story</a>
+                <a href="#gallery" class="text-white hover:text-gray-300 transition-colors">Gallery</a>
+                <a href="#contact" class="text-white hover:text-gray-300 transition-colors">Contact</a>
+            </nav>
+            <button class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <!-- <section class="hero-bg min-h-screen flex items-center justify-center text-white relative">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <div class="max-w-4xl mx-auto">
+                <img src="https://i.postimg.cc/3RnzcGSP/logo-image.jpg" alt="Kraken Seafood Restaurant" class="h-24 mx-auto mb-8 filter invert brightness-0">
+                <h1 class="text-4xl md:text-6xl font-light mb-8 leading-tight">
+                    Experience the Ocean's Finest<br>
+                    at Kraken Seafood Restaurant
+                </h1>
+                <p class="text-xl md:text-2xl mb-12 font-light">
+                    Fresh catches, expertly prepared in a modern waterfront setting
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#reservations" class="bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                        Reserve a Table
+                    </a>
+                    <a href="#menu" class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                        View Menu
+                    </a>
+                    <a href="#contact" class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section
+  class="min-h-screen flex items-center justify-center text-white relative"
+  style="
+    background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  "
+>
+  <!-- Overlay -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.75)
+      );
+      z-index: 1;
+    "
+  ></div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 text-center relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <img
+        src="https://i.postimg.cc/3RnzcGSP/logo-image.jpg"
+        alt="Kraken Seafood Restaurant"
+        class="h-24 mx-auto mb-10 filter "
+      />
+
+      <h1
+        class="text-4xl md:text-6xl font-light mb-8 leading-tight"
+        style="text-shadow: 0 4px 20px rgba(0,0,0,0.6);"
+      >
+        Experience the Ocean's Finest<br />
+        <span class="font-medium">at Kraken Seafood Restaurant</span>
+      </h1>
+
+      <p
+        class="text-xl md:text-2xl mb-14 font-light"
+        style="color: rgba(255,255,255,0.9);"
+      >
+        Fresh catches, expertly prepared in a modern waterfront setting
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5 justify-center">
+        <a
+          href="#reservations"
+          class="bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors shadow-lg"
+        >
+          Reserve a Table
+        </a>
+
+        <a
+          href="#menu"
+          class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors"
+        >
+          View Menu
+        </a>
+
+        <a
+          href="#contact"
+          class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Menu Section -->
+    <section id="menu" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4">Our Signature Dishes</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Fresh, sustainable seafood prepared with modern techniques and bold flavors
+                </p>
+            </div>
+
+            <!-- Signature Dishes -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Dish 1 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://i.postimg.cc/zDn9WWzJ/Grilled-Atlantic-Salmon.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Grilled Atlantic Salmon" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Grilled Atlantic Salmon</h3>
+                    <p class="text-gray-600 mb-3">Wild-caught salmon with lemon-dill butter, seasonal vegetables</p>
+                    <p class="text-lg font-medium">$28</p>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://i.postimg.cc/QMKXrtpc/Lobster-Thermidor.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Lobster Thermidor" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Lobster Thermidor</h3>
+                    <p class="text-gray-600 mb-3">Maine lobster in creamy brandy sauce, topped with gruyère</p>
+                    <p class="text-lg font-medium">$42</p>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Seared Scallops" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Seared Scallops</h3>
+                    <p class="text-gray-600 mb-3">Diver scallops with brown butter, crispy pancetta, and pea purée</p>
+                    <p class="text-lg font-medium">$34</p>
+                </div>
+
+                <!-- Dish 4 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://i.postimg.cc/kG64nTNV/Seafood-Paella.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Seafood Paella" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Seafood Paella</h3>
+                    <p class="text-gray-600 mb-3">Saffron rice with shrimp, mussels, clams, and chorizo</p>
+                    <p class="text-lg font-medium">$36</p>
+                </div>
+
+                <!-- Dish 5 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://i.postimg.cc/26WFV7x3/Fish-and-Chips.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fish and Chips" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Beer-Battered Fish & Chips</h3>
+                    <p class="text-gray-600 mb-3">Local cod with crispy fries, tartar sauce, and mushy peas</p>
+                    <p class="text-lg font-medium">$22</p>
+                </div>
+
+                <!-- Dish 6 -->
+                <div class="fade-in">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Oysters Rockefeller" class="w-full h-64 object-cover">
+                    </div>
+                    <h3 class="text-2xl font-medium mb-2">Oysters Rockefeller</h3>
+                    <p class="text-gray-600 mb-3">Fresh oysters with spinach, Pernod, and herbed breadcrumbs</p>
+                    <p class="text-lg font-medium">$18 (half dozen)</p>
+                </div>
+            </div>
+
+            <!-- Daily Specials -->
+            <div class="bg-gray-50 rounded-lg p-8 fade-in">
+                <h3 class="text-3xl font-light mb-6">Today's Specials</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-medium mb-2">Grilled Octopus</h4>
+                        <p class="text-gray-600 mb-3">Tender octopus with romesco sauce, fingerling potatoes, and microgreens</p>
+                        <p class="text-lg font-medium">$26</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-2">Crab-Stuffed Flounder</h4>
+                        <p class="text-gray-600 mb-3">Wild flounder stuffed with jumbo lump crab, lemon beurre blanc</p>
+                        <p class="text-lg font-medium">$38</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-light mb-6">Our Story</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Kraken Seafood Restaurant was born from a passion for sustainable seafood and modern coastal cuisine.
+                        Founded in 2018 by Chef Marcus Hayes, we've established ourselves as the premier destination for
+                        seafood lovers seeking fresh, responsibly-sourced ingredients prepared with creativity and care.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our relationships with local fishermen and purveyors ensure that only the freshest catches make it
+                        to your plate. From our waterfront location to our open kitchen, we've created an atmosphere that
+                        celebrates the ocean's bounty in every detail.
+                    </p>
+                    <a href="#reservations" class="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                        Experience Our Story
+                    </a>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-gray-200 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Our fishing boat at sea" class="w-full h-96 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4">Our Gallery</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Explore our restaurant, dishes, and the people who make Kraken special
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant interior" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh seafood preparation" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gourmet seafood dish" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lobster dish" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://i.postimg.cc/85CmC2z0/Salmon-dish.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salmon dish" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://i.postimg.cc/KjPP574M/Chef-at-Work.png ?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant bar area" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in visible">
+                    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Restaurant bar area" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item fade-in visible">
+                    <img src="https://i.postimg.cc/3RwQhWjL/Crab-Cakes.png?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Restaurant bar area" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Quote Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <blockquote class="text-2xl md:text-3xl font-light text-gray-700 mb-8 leading-relaxed">
+                    "At Kraken, we believe seafood should be celebrated in its purest form. Our menu changes with the seasons
+                    to showcase what's freshest from the ocean, prepared with respect for both the ingredients and our guests."
+                </blockquote>
+                <div class="flex items-center justify-center space-x-4">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Chef Marcus Hayes" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <p class="font-medium">Marcus Hayes</p>
+                        <p class="text-gray-600">Executive Chef & Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4">What Our Guests Say</h2>
+                <p class="text-xl text-gray-600">We're proud to serve our community and create memorable experiences</p>
+            </div>
+
+            <div class="testimonial-slider relative">
+                <div class="testimonial-track" id="testimonial-track">
+                    <div class="testimonial-card px-4">
+                        <div class="bg-gray-50 rounded-lg p-8 max-w-2xl mx-auto">
+                            <div class="flex mb-4">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                                "Kraken completely exceeded our expectations. The seafood was incredibly fresh and the
+                                flavors were perfectly balanced. The grilled octopus was a standout - tender and full of
+                                flavor. We'll definitely be back!"
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <img src="https://i.postimg.cc/bN5Wjbc2/sarah.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <p class="font-medium">Sarah Johnson</p>
+                                    <p class="text-gray-600 text-sm">Food Blogger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card px-4">
+                        <div class="bg-gray-50 rounded-lg p-8 max-w-2xl mx-auto">
+                            <div class="flex mb-4">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                                "As a seafood lover, I've tried many restaurants, but Kraken stands out. The lobster
+                                thermidor was rich and decadent, and the service was impeccable. The modern atmosphere
+                                makes it perfect for both casual dinners and special occasions."
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <p class="font-medium">Michael Chen</p>
+                                    <p class="text-gray-600 text-sm">Restaurant Critic</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-all" onclick="previousTestimonial()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-all" onclick="nextTestimonial()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Seafood background" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-6">Ready for an Unforgettable Dining Experience?</h2>
+                <p class="text-xl mb-12 max-w-2xl mx-auto">
+                    Join us at Kraken Seafood Restaurant for fresh catches, expert preparation, and a modern waterfront
+                    atmosphere that celebrates the ocean's bounty.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#reservations" class="bg-white text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+                        Reserve Your Table
+                    </a>
+                    <a href="#menu" class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                        View Full Menu
+                    </a>
+                    <a href="#contact" class="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-gray-900 transition-colors">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-light mb-6">Visit Us</h2>
+                    <div class="space-y-6 text-lg">
+                        <div>
+                            <h3 class="font-medium mb-2">Address</h3>
+                            <p class="text-gray-600">123 Ocean View Drive<br>Seaport City, SC 29401</p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium mb-2">Hours</h3>
+                            <p class="text-gray-600">
+                                Monday - Thursday: 11AM - 9PM<br>
+                                Friday - Saturday: 11AM - 10PM<br>
+                                Sunday: 11AM - 8PM
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium mb-2">Contact</h3>
+                            <p class="text-gray-600">
+                                Phone: (555) 123-4567<br>
+                                Email: info@krakenseafood.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="#reservations" class="inline-block bg-gray-900 text-white px-8 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                            Make a Reservation
+                        </a>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.834567890123!2d-79.9310706847656!3d32.7764749809732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a30b29f1a7f%3A0x1234567890abcdef!2s123%20Ocean%20View%20Drive%2C%20Charleston%2C%20SC%2029401!5e0!3m2!1sen!2sus!4v1634567890123!5m2!1sen!2sus"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="https://i.postimg.cc/3RnzcGSP/logo-image.jpg" alt="Kraken Seafood Restaurant"  alt="Kraken Seafood Restaurant" class="h-14 mb-4 filter ">
+                    <p class="text-gray-400">Modern seafood dining with fresh, sustainable ingredients.</p>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#menu" class="hover:text-white transition-colors">Menu</a></li>
+                        <li><a href="#story" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Mon-Thu: 11AM - 9PM</li>
+                        <li>Fri-Sat: 11AM - 10PM</li>
+                        <li>Sun: 11AM - 8PM</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Kraken Seafood Restaurant. All rights reserved Designed By Zannatul.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Elementor-like Widget Areas (for WordPress structure) -->
+    <div class="elementor-widget-areas" style="display: none;">
+        <div class="elementor-element elementor-hero-section"></div>
+        <div class="elementor-element elementor-menu-section"></div>
+        <div class="elementor-element elementor-story-section"></div>
+        <div class="elementor-element elementor-gallery-section"></div>
+        <div class="elementor-element elementor-cta-section"></div>
+        <div class="elementor-element elementor-contact-section"></div>
+    </div>
+
+    <script>
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        });
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const track = document.getElementById('testimonial-track');
+
+        function updateTestimonialPosition() {
+            const translateX = -currentTestimonial * (100 / testimonials.length);
+            track.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonialPosition();
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonialPosition();
+        }
+
+        // Auto-advance testimonials
+        setInterval(nextTestimonial, 5000);
+
+        // Gallery lightbox (basic implementation)
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const lightbox = document.createElement('div');
+                lightbox.className = 'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
+                lightbox.innerHTML = `
+                    <div class="relative max-w-4xl w-full">
+                        <img src="${img.src}" class="w-full h-auto max-h-screen object-contain">
+                        <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300" onclick="this.parentElement.parentElement.remove()">
+                            &times;
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(lightbox);
+                document.body.style.overflow = 'hidden';
+
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        lightbox.remove();
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('header button');
+        const nav = document.querySelector('header nav');
+
+        mobileMenuButton.addEventListener('click', function() {
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-black');
+            nav.classList.toggle('bg-opacity-90');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('space-y-4');
+        });
+    </script>
+</body>
+</html>
